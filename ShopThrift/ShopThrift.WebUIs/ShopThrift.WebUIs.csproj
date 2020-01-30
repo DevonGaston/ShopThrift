@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +236,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ProductManager\Index.cshtml" />
+    <Content Include="Views\ProductManager\Create.cshtml" />
+    <Content Include="Views\ProductManager\Edit.cshtml" />
+    <Content Include="Views\ProductManager\ConfirmDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +256,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShopThrift.Core\ShopThrift.Core.csproj">
+      <Project>{863de7f2-3719-45c5-bfbb-cf356bed7bcb}</Project>
+      <Name>ShopThrift.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopThrift.DataAccess.InMemory\ShopThrift.DataAccess.InMemory.csproj">
+      <Project>{82040059-dfc3-45a0-8831-99cc4307f8fb}</Project>
+      <Name>ShopThrift.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopThrift.DataAccess.SQL\ShopThrift.DataAccess.SQL.csproj">
+      <Project>{5bc9c043-a865-4c63-99c8-2b5f68fa9c62}</Project>
+      <Name>ShopThrift.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopThrift.Services\ShopThrift.Services.csproj">
+      <Project>{725c46cb-534b-4641-a914-78da3af6ebf8}</Project>
+      <Name>ShopThrift.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
