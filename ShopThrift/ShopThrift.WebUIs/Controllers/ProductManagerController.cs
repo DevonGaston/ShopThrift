@@ -28,9 +28,10 @@ namespace ShopThrift.WebUIs.Controllers
             return View(productToCreate);
         }
 
+        [HttpPost]
         public ActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(product);
             }
@@ -39,7 +40,6 @@ namespace ShopThrift.WebUIs.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
         public ActionResult Edit(string Id)
         {
             Product product = context.Find(Id);

@@ -50,10 +50,7 @@ namespace ShopThrift.DataAccess.InMemory
             {
                 return product;
             }
-            else
-            {
-                throw new Exception("Product not found");
-            }
+            throw new Exception("Product not found");
         }
         public IQueryable<Product> Collection()
         {
