@@ -1,5 +1,5 @@
 ﻿using ShopThrift.Core.Models;
-using ShopThrift.DataAccess.InMemory;
+using ShopThrift.Core.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +10,11 @@ namespace ShopThrift.WebUIs.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        InMemoryRepository<ProductCategory> context;
-        public ProductCategoryManagerController()
+        IRepository<ProductCategory> context;
+        public ProductCategoryManagerController(IRepository<ProductCategory> context)
         {
-            context = new InMemoryRepository<ProductCategory>();
-        }
+            this.context = context;
+    }
         public ActionResult Index()
         {
             List<ProductCategory> productCategories = context.Collection().ToList();
