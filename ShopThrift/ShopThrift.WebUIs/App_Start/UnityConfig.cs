@@ -1,5 +1,6 @@
 using ShopThrift.Core.Contracts;
 using ShopThrift.Core.Models;
+using ShopThrift.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -44,8 +45,8 @@ namespace ShopThrift.WebUIs
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
-            container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
+            container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
         }
     }
 }
