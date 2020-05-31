@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShopThrift.Core.Contracts;
+using ShopThrift.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,26 @@ namespace ShopThrift.WebUIs.Controllers
 {
     public class HomeController : Controller
     {
+        IRepository<Product> context;
+        IRepository<ProductCategory> productCategories;
+        public HomeController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
+        {
+            context = productContext;
+            productCategories = productCategoryContext;
+        }
         public ActionResult Index()
         {
-            return View();
+            List<Product> products = context.Collection().ToList();
+            return View(products);
+        }
+
+        public ActionResult Details(string Id){
+            Product product = context.Find(Id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
 
         public ActionResult About()
