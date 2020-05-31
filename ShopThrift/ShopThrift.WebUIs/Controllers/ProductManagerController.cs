@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using ShopThrift.Core.Models;
 using ShopThrift.Core.ViewModels;
 using ShopThrift.Core.Contracts;
+using System.Web;
+using System.IO;
 
 namespace ShopThrift.WebUIs.Controllers
 {  
@@ -33,11 +35,15 @@ namespace ShopThrift.WebUIs.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
                 return View(product);
+            }
+            if(file != null){
+                product.Image = product.Id + Path.GetExtension(file.FileName);
+                file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
             }
             context.Insert(product);
             context.Commit();
@@ -58,7 +64,7 @@ namespace ShopThrift.WebUIs.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product, String Id)
+        public ActionResult Edit(Product product, String Id, HttpPostedFileBase file)
         {
             Product productToEdit = context.Find(Id);
             if (productToEdit == null)
@@ -69,9 +75,13 @@ namespace ShopThrift.WebUIs.Controllers
             {
                 return View(product);
             }
+            if (file != null)
+            {
+                productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
+                file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
+            }
             productToEdit.Category = product.Category;
             productToEdit.Description = product.Description;
-            productToEdit.Image = product.Image;
             productToEdit.Name = product.Name;
             productToEdit.Price = product.Price;
 
