@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopThrift.Core.Models
 {
-    public class BasketItem:BaseEntity
+    public class BasketItem : BaseEntity
     {
         public string BasketId { get; set; }
         public string ProductId { get; set; }
