@@ -17,5 +17,7 @@ namespace ShopThrift.DataAccess.SQL
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategoreis { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
         }
     }
