@@ -9,7 +9,7 @@ namespace ShopThrift.Core.ViewModels
 {
     public class ProductListViewModel
     {
-        public IEnuumerable<Product> Products { get; set; }
+        public IEnumerable<Product> Products { get; set; }
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
     }
 }
