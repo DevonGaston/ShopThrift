@@ -2,6 +2,7 @@ using ShopThrift.Core.Contracts;
 using ShopThrift.Core.Models;
 using ShopThrift.DataAccess.SQL;
 using System;
+using ShopThrift.Services;
 
 using Unity;
 
@@ -47,6 +48,9 @@ namespace ShopThrift.WebUIs
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Basket>, SQLRepository<Basket>>();
+            container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
+            container.RegisterType<IBasketService, BasketService>();
         }
     }
 }

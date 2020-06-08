@@ -62,6 +62,7 @@ namespace ShopThrift.Services
             cookie.Value = basket.Id;
             cookie.Expires = DateTime.Now.AddDays(1);
             httpContext.Response.Cookies.Add(cookie);
+
             return basket;
         }
         public void AddToBasket(HttpContextBase httpContext, string productId)
