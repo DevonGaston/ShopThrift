@@ -4,51 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ShopThrift.Core.Contracts;
+using ShopThrift.Core.Models;
+using ShopThrift.Core.ViewModels;
 using ShopThrift.WebUIs;
 using ShopThrift.WebUIs.Controllers;
 
 namespace ShopThrift.WebUIs.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class UnitTest1
     {
         [TestMethod]
-        public void Index()
+        public void IndexPageDoesReturnProducts()
         {
-            //// Arrange
-            //HomeController controller = new HomeController();
+            IRepository<Product> productContext = new Mocks.MockContext<Product>();
+            IRepository<ProductCategory> productCategoryContext = new Mocks.MockContext<ProductCategory>();
+            HomeController controller = new HomeController(productContext, productCategoryContext);
 
-            //// Act
-            //ViewResult result = controller.Index() as ViewResult;
+            productContext.Insert(new Product());
 
-            //// Assert
-            //Assert.IsNotNull(result);
-        }
+            var result = controller.Index() as ViewResult;
+            var viewModel = (ProductListViewModel)result.ViewData.Model;
 
-        [TestMethod]
-        public void About()
-        {
-            //// Arrange
-            //HomeController controller = new HomeController();
-
-            //// Act
-            //ViewResult result = controller.About() as ViewResult;
-
-            //// Assert
-            //Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-        }
-
-        [TestMethod]
-        public void Contact()
-        {
-            //// Arrange
-            //HomeController controller = new HomeController();
-
-            //// Act
-            //ViewResult result = controller.Contact() as ViewResult;
-
-            //// Assert
-            //Assert.IsNotNull(result);
+            Assert.AreEqual(1, viewModel.Products.Count());
         }
     }
 }
