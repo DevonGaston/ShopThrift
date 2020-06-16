@@ -9,7 +9,8 @@ using System.Web;
 using System.IO;
 
 namespace ShopThrift.WebUIs.Controllers
-{  
+{
+    [Authorize(Roles = "Admin")]
     public class ProductManagerController : Controller
     {
         IRepository<Product> context;

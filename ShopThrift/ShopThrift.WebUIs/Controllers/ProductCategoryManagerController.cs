@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ShopThrift.WebUIs.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductCategoryManagerController : Controller
     {
         IRepository<ProductCategory> context;
